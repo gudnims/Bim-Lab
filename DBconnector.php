@@ -14,4 +14,5 @@ while($row = mysqli_fetch_assoc($result)) {
     $to_encode[] = $row;
 };
 echo json_encode($to_encode);
+$db->close();
 ?>
