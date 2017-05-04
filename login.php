@@ -13,5 +13,5 @@ if(!$row = $result->fetch_assoc()){
     $_SESSION['id'] = $row['id'];
     header("Location: index.html");
 }
-$conn->close();
+
 ?>
