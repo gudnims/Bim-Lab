@@ -1,18 +1,9 @@
 <?php
 
-$user = 'root';
-$pass = '';
-$db = 'BIMLab';
+$conn = mysqli_connect("localhost", "root", "", "BIMLab");
 
-$db = new mysqli('localhost', $user, $pass, $db) or die("unable to connect");
+if(!$conn){
+    die("Connection failed: ".mysqli_connect_error());
+}
 
-
-
-$result = mysqli_query($db, "SELECT * FROM news");
-$to_encode = array();
-while($row = mysqli_fetch_assoc($result)) {
-    $to_encode[] = $row;
-};
-echo json_encode($to_encode);
-$db->close();
 ?>
