@@ -1,17 +1,24 @@
 <?php
-include 'DBconnector.php';
 
-$name = $_POST['name'];
-$pwd = $_POST['pwd'];
+if(isset($_POST['name']) && isset($_POST['pwd'])){
 
-$sql = "SELECT * FROM user WHERE name='$name' AND pwd='$pwd'";
-$result = $conn->query($sql);
+    $name = $_POST['name'];
+    $pwd = $_POST['pwd'];
 
-if(!$row = $result->fetch_assoc()){
-    echo "Failed to log in";
-}else{
-    $_SESSION['id'] = $row['id'];
-    header("Location: index.html");
+    $conn = mysqli_connect('localhost', 'root', '', 'bimlab');
+
+    $data = mysqli_query($conn, "SELECT * FROM users WHERE 'name' = '{$name}' AND 'pwd' = '{$pwd}'");
+
+    if(!$data == 1){
+
+        $id = $data['id'];
+        session_start();
+        $_SESSION['id'] = $id;
+        echo "success";
+    }else{
+        echo "failed";
+    }
+    exit();
+
 }
-
 ?>
