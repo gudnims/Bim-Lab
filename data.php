@@ -7,5 +7,6 @@ $to_encode = array();
 while($row = mysqli_fetch_assoc($result)) {
     $to_encode[] = $row;
 };
-echo json_encode($to_encode);
+$json = json_encode($to_encode);
+echo $json;
 ?>

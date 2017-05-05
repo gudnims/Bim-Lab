@@ -36,6 +36,26 @@
         </ul>
     </nav>
 </header>
+<div class="main">
+    <div class="offers">
+        <div class="panel panel-primary">
+            <div class="panel-heading">BIM-Labs NEWS</div>
+            <div class="panel-body table-responsive">
+                <table class="table table-striped table-hover" id="getId">
+                    <thead>
+                    <tr>
+                        <th><i class="fa"></i> </th>
+
+                    </tr>
+                    </thead>
+                    <tbody id="info">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
@@ -54,10 +74,17 @@
             url: "data.php",
             dataType: "json",
 
-            success: function (data) {
-                console.log(data);
-
-
+            success: function (news) {
+                console.log(news);
+                var table = $("#info");
+                table.html("");
+                news.forEach(function (element){
+                    var tr = '<tr id="newsTable">' +
+                            '<div id="headline"><td width="100%">' + element.headline + '</td></div><br>' +
+                            '<div id="content"><td>' + element.content + '</td></div>'
+                            '</tr>';
+                            table.append(tr);
+                })
             }
         });
     }
