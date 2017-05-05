@@ -14,21 +14,32 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+
+    <link rel="stylesheet" type="text/css" href="admin.css">
+
     <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 </head>
 <body>
-<div class="welcome">
-    Welcome to the admin page<br>
-    Here you can create news.<br>
+<div>
+    <div class="welcome">
+        <h4 id="wel">Welcome to the admin page<br>
+            Here you can create news</h4><br>
+    </div>
 
-
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newsModal">
-        Create news
-    </button>
-    <form action="logout.php">
-    <input type="submit"  class="btn btn-primary btn-lg" value="Logout">
-        </form>
-
+    <div id="but">
+        <div id="first">
+            <div id="fir">
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newsModal">
+                    Create news
+                </button>
+            </div>
+            <div id="sec">
+                <form action="logout.php">
+                    <input type="submit" class="btn btn-primary btn-lg" value="Logout">
+                </form>
+            </div>
+        </div>
+    </div>
 
     <div class="main">
         <div class="offers">
@@ -38,7 +49,7 @@
                     <table class="table table-striped table-hover" id="getId">
                         <thead>
                         <tr>
-                            <th><i class="fa"></i> </th>
+                            <th><i class="fa"></i></th>
 
                         </tr>
                         </thead>
@@ -52,8 +63,9 @@
     </div>
 
 
-    <div class="modal fade" id="newsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade bs-example-modal-lg" id="newsModal" tabindex="-1" role="dialog"
+         aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -61,42 +73,37 @@
                     <h4 class="modal-title" id="myModalLabel">Create news</h4>
                 </div>
                 <form action="insertNews.php" method="post">
-                <div class="modal-body">
+                    <div class="modal-body">
+                        <div class="input-group"></div>
+                        <span class="input-group-addon">
                     <h4>Headline</h4>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="input-group">
-      <span class="input-group-addon">
-                        <input name="headline" type="text" class="form-control" aria-label="...">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                        <h4>News</h4>
-                            <textarea name="editor1" id="editor1"></textarea>
-                            <script type="text/javascript">CKEDITOR.replace('editor1');</script>
-                            </div>
-                        <input type="submit" value="Create News" >
+                <input name="headline" type="text" class="form-control" aria-label="...">
+                    <h4>Create news</h4>
+                <textarea name="editor1" id="editor1"></textarea>
+                <script type="text/javascript">CKEDITOR.replace('editor1');</script>
+
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <input id="cn" type="submit" value="Create News">
+                    </div>
                 </form>
-
-
-
             </div>
         </div>
     </div>
+</div>
 
-            </div>
-        </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-    <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
 <script>
     $(document).ready(function () {
         getNews()
     });
-
 
 
     function getNews() {
@@ -109,7 +116,7 @@
                 console.log(news);
                 var table = $("#info");
                 table.html("");
-                news.forEach(function (element){
+                news.forEach(function (element) {
                     var tr = '<tr id="newsTable">' +
                         '<div id="iddiv"><td id="id">' + element.id + '</td></div><br>' +
                         '<div id="headline"><td>' + element.headline + '</td></div><br>' +
