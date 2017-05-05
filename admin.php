@@ -1,9 +1,4 @@
 <?php
-session_start();
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +27,7 @@ session_start();
     </button>
     <form action="logout.php">
     <input type="submit"  class="btn btn-primary btn-lg" value="Logout">
+        </form>
 
 
     <div class="main">

@@ -12,83 +12,88 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="index.css">
 
 </head>
 <body>
-<header>
+<div id="gradient">
+    <header>
 
         <ul>
             <div class="dropdown">
 
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
                     Admin
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
-                            <input type='text' id="name" name='name' placeholder='name'><br>
-                            <input type='password' id="pwd" name='pwd' placeholder='password'><br>
-                            <button type='submit' id="login" onclick="validate()">Login</button>
+                    <input class="form-control" type='text' id="name" name='name' placeholder='name'><br>
+                    <input class="form-control" type='password' id="pwd" name='pwd' placeholder='password'><br>
+                    <button class="btn btn-default" type='submit' id="login" onclick="validate()">Login</button>
 
 
                 </ul>
             </div>
         </ul>
-    </nav>
-</header>
-<div class="main">
-    <div class="offers">
-        <div class="panel panel-primary">
-            <div class="panel-heading">BIM-Labs NEWS</div>
-            <div class="panel-body table-responsive">
-                <table class="table table-striped table-hover" id="getId">
-                    <thead>
-                    <tr>
-                        <th><i class="fa"></i> </th>
+        </nav>
+    </header>
+    <div id="container" class="col-md-12">
+        <div id="pic" class="col.md.5">
+            <img src="csm_160317_kompetenceloeft_02f1ad1123.jpg" width="120%">
+        </div>
 
-                    </tr>
-                    </thead>
-                    <tbody id="info">
-                    </tbody>
-                </table>
+
+        <div id="main" class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>News</h4></div>
+                <div class="firstnews">
+                </div>
             </div>
         </div>
     </div>
-
 </div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-<script src="login.js"></script>
+<script src="js/login.js"></script>
 
 <script>
+
     $(document).ready(function () {
         getNews()
+        //setInterval(function(){
+        // getNews()
+        //}, 7000);
     });
 
     function getNews() {
+
+
         $.ajax({
             method: "GET",
             url: "data.php",
             dataType: "json",
+            success: function (data) {
+                var div = $(".firstnews");
+                $.each(data, function (key, value) {
 
-            success: function (news) {
-                console.log(news);
-                var table = $("#info");
-                table.html("");
-                news.forEach(function (element){
-                    var tr = '<tr id="newsTable">' +
-                            '<div id="headline"><td width="100%">' + element.headline + '</td></div><br>' +
-                            '<div id="content"><td>' + element.content + '</td></div>'
-                            '</tr>';
-                            table.append(tr);
-                })
+
+                    var di = '<div>' +
+                            '<h3>' + value.headline + '</h3>' +
+                            '<div>' + value.content + '</div>'
+                    '</div>';
+                    div.append(di);
+                });
             }
-        });
+        })
     }
 
 </script>
+</div>
 </body>
 </html>
