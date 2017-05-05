@@ -1,20 +1,21 @@
-$(function(){
+var attempt = 3;
 
-    $("#login").click(function(){
+function validate(){
+    var username = document.getElementById("name").value;
+    var password = document.getElementById("pwd").value;
+    if ( username == "admin" && password == "admin"){
+        alert ("Login successfully");
+        window.location = "admin.php";
+    }
+    else {
+        attempt--;
+        alert("You have left " + attempt + " attempt;");
 
-        var name = $("#name").val();
-        var pwd = $("#pwd").val();
-        console.log(name);
+        if (attempt == 0) {
+            document.getElementById("name").disabled = true;
+            document.getElementById("pwd").disabled = true;
+            document.getElementById("login").disabled = true;
+        }
+    }
 
-        $.post("login.php", {name: name, pwd: pwd})
-            .done(function(data){
-                if(data == "success"){
-                    console.log(data);
-                    //window.location = "admin.php";
-                    $(location).attr('href', 'admin.php');
-                }else{
-                    alert ("Failed try again");
-                }
-            });
-    });
-});
+}

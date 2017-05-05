@@ -1,24 +1,32 @@
 <?php
 
+session_start();
+
+include 'DBconnector.php';
+
 if(isset($_POST['name']) && isset($_POST['pwd'])){
 
     $name = $_POST['name'];
     $pwd = $_POST['pwd'];
+    var_dump($name);
+    var_dump($pwd);
 
-    $conn = mysqli_connect('localhost', 'root', '', 'bimlab');
+    $sql = "SELECT * FROM user WHERE 'name' = '{$name}'";
+    //var_dump($sql);
+    $result = mysqli_query($conn, $sql);
+    var_dump($result);
+    $res = mysqli_fetch_array($result);
+    $cname = $res['name'];
+    var_dump($res  ."hello");
 
-    $data = mysqli_query($conn, "SELECT * FROM users WHERE 'name' = '{$name}' AND 'pwd' = '{$pwd}'");
 
-    if(!$data == 1){
-
-        $id = $data['id'];
-        session_start();
-        $_SESSION['id'] = $id;
-        echo "success";
+    if(!$row = $result->fetch_assoc()){
+        echo "Failed";
     }else{
-        echo "failed";
+        $_SESSION['id'] = $row['id'];
+        header("Location: admin.php");
     }
-    exit();
+
 
 }
 ?>
