@@ -65,10 +65,10 @@
 <script>
 
     $(document).ready(function () {
-        getNews()
-        //setInterval(function(){
-        // getNews()
-        //}, 7000);
+        getNews();
+        setInterval(function () {
+            getNews();
+        }, 3600000);
     });
 
     function getNews() {
@@ -81,8 +81,6 @@
             success: function (data) {
                 var div = $(".firstnews");
                 $.each(data, function (key, value) {
-
-
                     var di = '<div>' +
                             '<h3>' + value.headline + '</h3>' +
                             '<div>' + value.content + '</div>'

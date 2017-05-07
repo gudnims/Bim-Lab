@@ -12,4 +12,6 @@ if(!mysqli_query($conn, $sql)){
 }else{
     header("refresh:2; url=admin.php");
 }
+$conn->close();
+exit();
 ?>

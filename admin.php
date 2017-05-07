@@ -113,7 +113,6 @@
             dataType: "json",
 
             success: function (news) {
-                console.log(news);
                 var table = $("#info");
                 table.html("");
                 news.forEach(function (element) {
