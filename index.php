@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,6 +69,9 @@
     $(document).ready(function () {
         getNews();
         setInterval(function () {
+            $(".firstnews").html("");
+            var d = new Date();
+            console.log(d);
             getNews();
         }, 3600000);
     });
