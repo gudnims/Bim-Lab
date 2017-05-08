@@ -1,4 +1,5 @@
 <?php
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,11 +31,11 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-
+                    <form action="login.php" method="post">
                     <input class="form-control" type='text' id="name" name='name' placeholder='name'><br>
                     <input class="form-control" type='password' id="pwd" name='pwd' placeholder='password'><br>
-                    <button class="btn btn-default" type='submit' id="login" onclick="validate()">Login</button>
-
+                    <input class="btn btn-default" style="margin-left: 30%;" type='submit' value="Login">
+                    </form>
 
                 </ul>
             </div>
@@ -62,19 +63,24 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-<script src="js/login.js"></script>
+
 
 <script>
 
     $(document).ready(function () {
         getNews();
+        getTime();
         setInterval(function () {
             $(".firstnews").html("");
-            var d = new Date();
-            console.log(d);
+            getTime();
             getNews();
         }, 3600000);
     });
+
+    function getTime(){
+        var d = new Date();
+        console.log(d);
+    }
 
     function getNews() {
 
