@@ -2,7 +2,8 @@
 session_start();
 
 if(!isset($_SESSION['id'])){
-    header('Location: index.php');
+    echo "<script type=\"text/javascript\">window.alert('You need to log in first to access admin')</script>";
+    header("refresh:0; url=index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -110,6 +111,11 @@ if(!isset($_SESSION['id'])){
         getNews()
     });
 
+    $('#info').click(function(e){
+        var id = $(this).closest('innerHTML');
+        var idn = $('#info:last-child[2]');
+        console.log(idn);
+    });
 
     function getNews() {
         $.ajax({
@@ -122,9 +128,10 @@ if(!isset($_SESSION['id'])){
                 table.html("");
                 news.forEach(function (element) {
                     var tr = '<tr id="newsTable">' +
-                        '<div id="iddiv"><td id="id">' + element.id + '</td></div><br>' +
+                        '<div id="idnews"><td id="idn">' + element.id + '</td></div><br>' +
                         '<div id="headline"><td>' + element.headline + '</td></div><br>' +
-                        '<div id="content"><td>' + element.content + '</td></div>'
+                        '<div id="content"><td>' + element.content + '</td></div><br>' +
+                        '<td><button class="btn btn-primary">Delete</button></td>'
                     '</tr>';
                     table.append(tr);
                 })
