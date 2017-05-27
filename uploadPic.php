@@ -1,6 +1,6 @@
 <?php
 
-$valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp'); // valid extensions
+$valid_extensions = array('jpeg', 'jpg', 'png'); // valid extensions
 $path = 'uploads/'; // upload directory
 
 if(isset($_FILES['image']))

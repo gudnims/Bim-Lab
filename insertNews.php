@@ -4,8 +4,9 @@ include 'DBconnector.php';
 
 $headline = $_POST['headline'];
 $content = $_POST['editor1'];
+$pic = $_POST['pic'];
 
-$sql = "INSERT INTO news (headline, content) VALUES ('$headline', '$content')";
+$sql = "INSERT INTO news (pic, headline, content) VALUES ('$pic', '$headline', '$content')";
 
 if(!mysqli_query($conn, $sql)){
     echo "Failed";

@@ -93,6 +93,7 @@ session_start();
                 var div = $(".firstnews");
                 $.each(data, function (key, value) {
                     var di = '<div>' +
+                            '<div><img>' + value.pic + '</img>' +
                             '<h3>' + value.headline + '</h3>' +
                             '<div>' + value.content + '</div>'
                     '</div>';

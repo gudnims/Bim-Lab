@@ -78,10 +78,12 @@ if(!isset($_SESSION['id'])){
                             aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Create news</h4>
                 </div>
-                <form id="form" action="ajaxupload.php" method="post" enctype="multipart/form-data">
-                    <input id="uploadImage" type="file" accept="image/*" name="image" />
-                    <input id="button" type="submit" value="Upload">
-                    <div id="preview"><img src="no-image.jpg" /></div>
+                <form id="form" action="ajaxupload.php" method="post" enctype="multipart/form-data" style="text-align: center">
+                    <label class="btn btn-default btn-file">
+                        Browse <input type="file" id="uploadImage" accept="image/*" name="image" / style="display: none;">
+                    </label>
+                    <div id="preview" name="pic"><img src="no-image.jpg" /></div>
+                    <input class="btn btn-default" id="button" type="submit" value="Upload">
                 </form>
                 <div id="err"></div>
                 <form action="insertNews.php" method="post">
@@ -98,7 +100,7 @@ if(!isset($_SESSION['id'])){
 
 
                     <div class="modal-footer">
-                        <input id="cn" type="submit" value="Create News">
+                        <input class="btn btn-default" id="cn" type="submit" value="Create News">
                     </div>
                 </form>
             </div>
