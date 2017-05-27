@@ -78,6 +78,12 @@ if(!isset($_SESSION['id'])){
                             aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Create news</h4>
                 </div>
+                <form id="form" action="ajaxupload.php" method="post" enctype="multipart/form-data">
+                    <input id="uploadImage" type="file" accept="image/*" name="image" />
+                    <input id="button" type="submit" value="Upload">
+                    <div id="preview"><img src="no-image.jpg" /></div>
+                </form>
+                <div id="err"></div>
                 <form action="insertNews.php" method="post">
                     <div class="modal-body">
                         <div class="input-group"></div>
@@ -106,6 +112,44 @@ if(!isset($_SESSION['id'])){
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
+<script>
+    $(document).ready(function (e) {
+        $("#form").on('submit',(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "uploadPic.php",
+                type: "POST",
+                data:  new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend : function()
+                {
+                    $("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function(data)
+                {
+                    if(data=='invalid file')
+                    {
+                        // invalid file format.
+                        $("#err").html("Invalid File !").fadeIn();
+                    }
+                    else
+                    {
+                        // view uploaded file.
+                        $("#preview").html(data).fadeIn();
+                        $("#form")[0].reset();
+                    }
+                },
+                error: function(e)
+                {
+                    $("#err").html(e).fadeIn();
+                }
+            });
+        }));
+    });
+</script>
 <script>
     $(document).ready(function () {
         getNews()
