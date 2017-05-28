@@ -82,19 +82,20 @@ if(!isset($_SESSION['id'])){
                     <label class="btn btn-default btn-file">
                         Browse <input type="file" id="uploadImage" accept="image/*" name="image" / style="display: none;">
                     </label>
-                    <div id="preview" name="pic"><img src="no-image.jpg" /></div>
                     <input class="btn btn-default" id="button" type="submit" value="Upload">
                 </form>
-                <div id="err"></div>
                 <form action="insertNews.php" method="post">
                     <div class="modal-body">
                         <div class="input-group"></div>
                         <span class="input-group-addon">
+                            <div id="preview" name="pic"><img src="uploads/no-image.jpg" /></div>
+                            <div id="err"></div>
                     <h4>Headline</h4>
                 <input name="headline" type="text" class="form-control" aria-label="...">
                     <h4>Create news</h4>
                 <textarea name="editor1" id="editor1"></textarea>
                 <script type="text/javascript">CKEDITOR.replace('editor1');</script>
+                            <input id="mynd" name="pic" type="text" class="form-control" aria-label="...">
 
                     </div>
 
@@ -125,27 +126,25 @@ if(!isset($_SESSION['id'])){
                 contentType: false,
                 cache: false,
                 processData:false,
-                beforeSend : function()
-                {
+                beforeSend : function() {
                     $("#preview").fadeOut();
                     $("#err").fadeOut();
                 },
-                success: function(data)
-                {
-                    if(data=='invalid file')
-                    {
+                success: function(data) {
+                    var dt = data;
+                    dt = dt.slice(10, -4);
+                    document.getElementById("mynd").value = dt;
+                    if(data=='invalid file') {
                         // invalid file format.
                         $("#err").html("Invalid File !").fadeIn();
                     }
-                    else
-                    {
+                    else {
                         // view uploaded file.
                         $("#preview").html(data).fadeIn();
                         $("#form")[0].reset();
                     }
                 },
-                error: function(e)
-                {
+                error: function(e) {
                     $("#err").html(e).fadeIn();
                 }
             });

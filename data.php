@@ -1,6 +1,5 @@
 <?php
 
-
 include 'DBconnector.php';
 
 $result = mysqli_query($conn, "SELECT * FROM news");
