@@ -32,9 +32,9 @@ session_start();
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <form action="login.php" method="post">
-                    <input class="form-control" type='text' id="name" name='name' placeholder='name'><br>
-                    <input class="form-control" type='password' id="pwd" name='pwd' placeholder='password'><br>
-                    <input class="btn btn-default" style="margin-left: 30%;" type='submit' value="Login">
+                        <input class="form-control" type='text' id="name" name='name' placeholder='name'><br>
+                        <input class="form-control" type='password' id="pwd" name='pwd' placeholder='password'><br>
+                        <input class="btn btn-default" style="margin-left: 30%;" type='submit' value="Login">
                     </form>
 
                 </ul>
@@ -42,7 +42,7 @@ session_start();
         </ul>
         </nav>
     </header>
-    <div id="container" class="col-md-12">
+    <div id="container" class="clearfix">
         <div id="pic" class="col.md.5">
             <img src="csm_160317_kompetenceloeft_02f1ad1123.jpg" width="120%">
         </div>
@@ -55,6 +55,8 @@ session_start();
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>
 
@@ -69,15 +71,13 @@ session_start();
 
     $(document).ready(function () {
         getNews();
-        getTime();
-        setInterval(function () {
-            $(".firstnews").html("");
-            getTime();
-            getNews();
-        }, 3600000);
+        setInterval(function(){
+            getNews() },
+            30000);
+
     });
 
-    function getTime(){
+    function getTime() {
         var d = new Date();
         console.log(d);
     }
@@ -90,19 +90,54 @@ session_start();
             url: "data.php",
             dataType: "json",
             success: function (data) {
-                var div = $(".firstnews");
-                $.each(data, function (key, value) {
-                    var di = '<div>' +
-                            '<div><img>' + value.pic + '</img>' +
-                            '<h3>' + value.headline + '</h3>' +
-                            '<div>' + value.content + '</div>'
-                    '</div>';
-                    div.append(di);
-                });
+                getData(data);
             }
         })
     }
 
+    function getData(data) {
+        var num = data.length;
+        var div = $(".firstnews");
+        if (num == 0) {
+            $(".firstnews").html("");
+            var nonews = '<div>' +
+                '<h3 style="text-align: center"> No news today this webpage is here to stay.... </h3>'
+            '</div>';
+            div.append(nonews);
+        } else {
+            var counter = 0;
+            var delay = 30000;
+            var howMany = data.length;
+            for(var i = 0; i < howMany; i++){
+                (function(i){
+                    setTimeout(function(){
+                        getTime();
+                        $(".firstnews").html("");
+                        var pickNews = data[counter];
+                        var yesNews = '<div id="firstnews">' +
+                            '<div style="text-align: center"><img src="' + pickNews.pic + '"></div>' +
+                            '<h3 style="text-align: center">' + pickNews.headline + '</h3>' +
+                            '<div style="text-align: center">' + pickNews.content + '</div>'
+                        '</div>';
+                        div.append(yesNews);
+                        counter += 1;
+                    }, delay * i);
+                }(i));
+            };
+            getData();
+
+
+
+            // var randomNumber = Math.floor((Math.random() * num));
+            //var newsData = data[randomNumber];
+            //var newsDiv = '<div>' +
+            //  '<div style="text-align: center"><img src="' + newsData.pic + '"></div>' +
+            //   '<h3 style="text-align: center">' + newsData.headline + '</h3>' +
+            //   '<div style="text-align: center">' + newsData.content + '</div>'
+            //'</div>';
+            //div.append(newsDiv);
+        }
+    }
 </script>
 </div>
 </body>
