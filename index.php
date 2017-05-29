@@ -72,8 +72,8 @@ session_start();
     $(document).ready(function () {
         getNews();
         setInterval(function(){
-            getNews() },
-            30000);
+           getNews()
+        }, 18050);
 
     });
 
@@ -98,6 +98,7 @@ session_start();
     function getData(data) {
         var num = data.length;
         var div = $(".firstnews");
+        var main = $("#main");
         if (num == 0) {
             $(".firstnews").html("");
             var nonews = '<div>' +
@@ -106,26 +107,24 @@ session_start();
             div.append(nonews);
         } else {
             var counter = 0;
-            var delay = 30000;
-            var howMany = data.length;
-            for(var i = 0; i < howMany; i++){
-                (function(i){
-                    setTimeout(function(){
-                        getTime();
-                        $(".firstnews").html("");
+            var delay = 6000;
+
+            for (var i = 0; i < num; i++) {
+                (function (i) {
+                    setTimeout(function () {
                         var pickNews = data[counter];
-                        var yesNews = '<div id="firstnews">' +
+                        div.html("");
+                        var yesNews = '<div>' +
                             '<div style="text-align: center"><img src="' + pickNews.pic + '"></div>' +
                             '<h3 style="text-align: center">' + pickNews.headline + '</h3>' +
                             '<div style="text-align: center">' + pickNews.content + '</div>'
                         '</div>';
-                        div.append(yesNews);
-                        counter += 1;
+                        counter++;
+                        div.append(yesNews).slideDown(1500).delay(3000).slideUp(1500);
                     }, delay * i);
                 }(i));
-            };
+            }
             getData();
-
 
 
             // var randomNumber = Math.floor((Math.random() * num));
@@ -139,6 +138,6 @@ session_start();
         }
     }
 </script>
-</div>
+
 </body>
 </html>

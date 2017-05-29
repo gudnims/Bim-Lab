@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['id'])){
+if (!isset($_SESSION['id'])) {
     echo "<script type=\"text/javascript\">window.alert('You need to log in first to access admin')</script>";
     header("refresh:0; url=index.php");
 }
@@ -25,47 +25,60 @@ if(!isset($_SESSION['id'])){
 
     <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 </head>
-<body>
-<div>
-    <div class="welcome">
-        <h4 id="wel">Welcome to the admin page<br>
-            Here you can create news</h4><br>
-    </div>
 
-    <div id="but">
-        <div id="first">
-            <div id="fir">
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newsModal">
-                    Create news
-                </button>
-            </div>
+    <body>
+
+    <div id="gradient">
+        <header>
+
+
+
+
+                    <div id="fir">
+                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                                data-target="#newsModal">
+                            Create news
+                        </button>
+                    </div>
+
+
+
+
             <div id="sec">
                 <form action="logout.php">
                     <input type="submit" class="btn btn-primary btn-lg" value="Logout">
                 </form>
             </div>
-        </div>
-    </div>
 
-    <div class="main">
-        <div class="offers">
-            <div class="panel panel-primary">
-                <div class="panel-heading">BIM-Labs NEWS</div>
-                <div class="panel-body table-responsive">
-                    <table class="table table-striped table-hover" id="getId">
-                        <thead>
-                        <tr>
-                            <th><i class="fa"></i></th>
 
-                        </tr>
-                        </thead>
-                        <tbody id="info">
-                        </tbody>
-                    </table>
+        </header>
+        <div id="container" class="clearfix">
+
+
+
+            <div class="main">
+                <div class="offers">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">BIM-Labs NEWS</div>
+                        <div class="panel-body table-responsive">
+                            <table class="table table-striped table-hover" id="getId">
+                                <thead>
+                                <tr>
+                                    <th><i class="fa"></i></th>
+
+                                </tr>
+                                </thead>
+                                <tbody id="info">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
+            </div>
+
+
+        </div>
     </div>
 
 
@@ -78,9 +91,11 @@ if(!isset($_SESSION['id'])){
                             aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Create news</h4>
                 </div>
-                <form id="form" action="ajaxupload.php" method="post" enctype="multipart/form-data" style="text-align: center">
+                <form id="form" action="ajaxupload.php" method="post" enctype="multipart/form-data"
+                      style="text-align: center">
                     <label class="btn btn-default btn-file">
-                        Browse <input type="file" id="uploadImage" accept="image/*" name="image" / style="display: none;">
+                        Browse <input type="file" id="uploadImage" accept="image/*" name="image" / style="display:
+                        none;">
                     </label>
                     <input class="btn btn-default" id="button" type="submit" value="Upload">
                 </form>
@@ -88,7 +103,7 @@ if(!isset($_SESSION['id'])){
                     <div class="modal-body">
                         <div class="input-group"></div>
                         <span class="input-group-addon">
-                            <div id="preview" name="pic"><img src="uploads/no-image.jpg" /></div>
+                            <div id="preview" name="pic"><img src="uploads/no-image.jpg"/></div>
                             <div id="err"></div>
                     <h4>Headline</h4>
                 <input name="headline" type="text" class="form-control" aria-label="...">
@@ -107,7 +122,7 @@ if(!isset($_SESSION['id'])){
             </div>
         </div>
     </div>
-</div>
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -117,24 +132,24 @@ if(!isset($_SESSION['id'])){
 <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
 <script>
     $(document).ready(function (e) {
-        $("#form").on('submit',(function(e) {
+        $("#form").on('submit', (function (e) {
             e.preventDefault();
             $.ajax({
                 url: "uploadPic.php",
                 type: "POST",
-                data:  new FormData(this),
+                data: new FormData(this),
                 contentType: false,
                 cache: false,
-                processData:false,
-                beforeSend : function() {
+                processData: false,
+                beforeSend: function () {
                     $("#preview").fadeOut();
                     $("#err").fadeOut();
                 },
-                success: function(data) {
+                success: function (data) {
                     var dt = data;
                     dt = dt.slice(10, -4);
                     document.getElementById("mynd").value = dt;
-                    if(data=='invalid file') {
+                    if (data == 'invalid file') {
                         // invalid file format.
                         $("#err").html("Invalid File !").fadeIn();
                     }
@@ -144,7 +159,7 @@ if(!isset($_SESSION['id'])){
                         $("#form")[0].reset();
                     }
                 },
-                error: function(e) {
+                error: function (e) {
                     $("#err").html(e).fadeIn();
                 }
             });
@@ -156,7 +171,7 @@ if(!isset($_SESSION['id'])){
         getNews()
     });
 
-    $('#info').click(function(e){
+    $('#info').click(function (e) {
         var id = $(this).closest('innerHTML');
         var idn = $('#info:last-child[2]');
         console.log(idn);
@@ -173,9 +188,7 @@ if(!isset($_SESSION['id'])){
                 table.html("");
                 news.forEach(function (element) {
                     var tr = '<tr id="newsTable">' +
-                        '<div id="idnews"><td id="idn">' + element.id + '</td></div><br>' +
                         '<div id="headline"><td>' + element.headline + '</td></div><br>' +
-                        '<div id="content"><td>' + element.content + '</td></div><br>' +
                         '<td><button class="btn btn-primary">Delete</button></td>'
                     '</tr>';
                     table.append(tr);
