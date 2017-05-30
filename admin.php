@@ -26,83 +26,98 @@ if (!isset($_SESSION['id'])) {
     <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 </head>
 
-    <body>
+<body>
 
-    <div id="gradient">
-        <header>
-
-
-
-
+<div id="gradient">
+    <div id="container" class="clearfix">
+    <header>
+    </header>
+    <div class="mainFirst">
+        <div class="offers">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Settings</div>
+                <div class="panel-body table-responsive">
                     <div id="fir">
                         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
                                 data-target="#newsModal">
                             Create news
                         </button>
                     </div>
-
-
-
-
-            <div id="sec">
-                <form action="logout.php">
-                    <input type="submit" class="btn btn-primary btn-lg" value="Logout">
-                </form>
-            </div>
-
-
-        </header>
-        <div id="container" class="clearfix">
-
-
-
-            <div class="main">
-                <div class="offers">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">BIM-Labs NEWS</div>
-                        <div class="panel-body table-responsive">
-                            <table class="table table-striped table-hover" id="getId">
-                                <thead>
-                                <tr>
-                                    <th><i class="fa"></i></th>
-
-                                </tr>
-                                </thead>
-                                <tbody id="info">
-                                </tbody>
-                            </table>
-                        </div>
+                    <div><b>Current Interval</b></div>
+                    <div id="currentInterval"></div>
+                    <div><b>To change the interval between news, enter the number of minutes and press CHANGE INTERVAL button</b></div>
+                    <div id="third">
+                        <form action="settings.php" method="post">
+                            <input type="number" class="form-control" name="time" id="timeControl">
+                            <input type="submit" class="btn btn-primary btn-lg" value="Change Interval" id="settingsButton">
+                        </form>
                     </div>
+                    <div id="sec">
+                        <form action="logout.php">
+                            <input type="submit" class="btn btn-primary btn-lg" value="Logout">
+                        </form>
+                    </div>
+
                 </div>
-
             </div>
-
-
         </div>
+
     </div>
 
 
-    <div class="modal fade bs-example-modal-lg" id="newsModal" tabindex="-1" role="dialog"
-         aria-labelledby="myLargeModalLabel">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Create news</h4>
+
+
+
+
+
+        <div class="main">
+            <div class="offers">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">BIM-Labs NEWS</div>
+                    <div class="panel-body table-responsive">
+                        <table class="table table-striped table-hover" id="getId">
+                            <thead>
+                            <tr>
+                                <th>Headline</th>
+                                <th>Funktion</th>
+
+                            </tr>
+                            </thead>
+                            <tbody id="info">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <form id="form" action="ajaxupload.php" method="post" enctype="multipart/form-data"
-                      style="text-align: center">
-                    <label class="btn btn-default btn-file">
-                        Browse <input type="file" id="uploadImage" accept="image/*" name="image" / style="display:
-                        none;">
-                    </label>
-                    <input class="btn btn-default" id="button" type="submit" value="Upload">
-                </form>
-                <form action="insertNews.php" method="post">
-                    <div class="modal-body">
-                        <div class="input-group"></div>
-                        <span class="input-group-addon">
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<div class="modal fade bs-example-modal-lg" id="newsModal" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Create news</h4>
+            </div>
+            <form id="form" action="ajaxupload.php" method="post" enctype="multipart/form-data"
+                  style="text-align: center">
+                <label class="btn btn-default btn-file">
+                    Browse <input type="file" id="uploadImage" accept="image/*" name="image" / style="display:
+                    none;">
+                </label>
+                <input class="btn btn-default" id="button" type="submit" value="Upload">
+            </form>
+            <form action="insertNews.php" method="post">
+                <div class="modal-body">
+                    <div class="input-group"></div>
+                    <span class="input-group-addon">
                             <div id="preview" name="pic"><img src="uploads/no-image.jpg"/></div>
                             <div id="err"></div>
                     <h4>Headline</h4>
@@ -112,17 +127,16 @@ if (!isset($_SESSION['id'])) {
                 <script type="text/javascript">CKEDITOR.replace('editor1');</script>
                             <input id="mynd" name="pic" type="text" class="form-control" aria-label="...">
 
-                    </div>
+                </div>
 
 
-                    <div class="modal-footer">
-                        <input class="btn btn-default" id="cn" type="submit" value="Create News">
-                    </div>
-                </form>
-            </div>
+                <div class="modal-footer">
+                    <input class="btn btn-default" id="cn" type="submit" value="Create News">
+                </div>
+            </form>
         </div>
     </div>
-
+</div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -169,6 +183,7 @@ if (!isset($_SESSION['id'])) {
 <script>
     $(document).ready(function () {
         getNews()
+        getInterval()
     });
 
     $('#info').click(function (e) {
@@ -193,6 +208,25 @@ if (!isset($_SESSION['id'])) {
                     '</tr>';
                     table.append(tr);
                 })
+            }
+        });
+    }
+
+    function getInterval() {
+        var currentDiv = $("#currentInterval");
+        currentDiv.html("");
+        $.ajax({
+            method: "GET",
+            url: "getInterval.php",
+            dataType: "json",
+
+            success: function(data){
+                data.forEach(function(get){
+                    var getInterval = '<div>' +
+                        '<div style="text-align: center">' + get.setting + '<b> minutes.</b></div>'
+                    '</div>';
+                    currentDiv.append(getInterval);
+                });
             }
         });
     }

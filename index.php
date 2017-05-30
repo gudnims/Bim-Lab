@@ -73,7 +73,7 @@ session_start();
         getNews();
         setInterval(function(){
            getNews()
-        }, 18050);
+        }, 12050);
 
     });
 
