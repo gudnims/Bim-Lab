@@ -204,7 +204,7 @@ if (!isset($_SESSION['id'])) {
             success: function (data) {
                 data.forEach(function (get) {
                     var getInterval = '<div>' +
-                        '<div style="text-align: center"><b>Current Interval </b>' + get.setting + '<b> minutes.</b></div>'
+                        '<div style="text-align: center"><b>Current Interval ' + get.setting + ' minutes.</b></div>'
                     '</div>';
                     currentDiv.append(getInterval);
                 });
