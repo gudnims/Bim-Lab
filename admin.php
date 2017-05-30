@@ -21,81 +21,62 @@ if (!isset($_SESSION['id'])) {
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 
-    <link rel="stylesheet" type="text/css" href="style/admin.css">
+    <link rel="stylesheet" type="text/css" href="style/fejl.css">
 
     <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 </head>
-
 <body>
-
 <div id="gradient">
-    <div id="container" class="clearfix">
     <header>
     </header>
-    <div class="mainFirst">
-        <div class="offers">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Settings</div>
-                <div class="panel-body table-responsive">
-                    <div id="fir">
-                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
-                                data-target="#newsModal">
-                            Create news
-                        </button>
-                    </div>
-                    <div><b>Current Interval</b></div>
-                    <div id="currentInterval"></div>
-                    <div><b>To change the interval between news, enter the number of minutes and press CHANGE INTERVAL button</b></div>
-                    <div id="third">
-                        <form action="settings.php" method="post">
-                            <input type="number" class="form-control" name="time" id="timeControl">
-                            <input type="submit" class="btn btn-primary btn-lg" value="Change Interval" id="settingsButton">
-                        </form>
-                    </div>
-                    <div id="sec">
-                        <form action="logout.php">
-                            <input type="submit" class="btn btn-primary btn-lg" value="Logout">
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-
-
-
-
-
-
-        <div class="main">
-            <div class="offers">
+    <div id="container" class="clearfix">
+        <div class="mainFirst">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">BIM-Labs NEWS</div>
+                    <div class="panel-heading">Settings</div>
                     <div class="panel-body table-responsive">
-                        <table class="table table-striped table-hover" id="getId">
-                            <thead>
-                            <tr>
-                                <th>Headline</th>
-                                <th>Funktion</th>
-
-                            </tr>
-                            </thead>
-                            <tbody id="info">
-                            </tbody>
-                        </table>
+                        <div id="fir" style="text-align: center">
+                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="createNewsButton"
+                                    data-target="#newsModal">
+                                Create news
+                            </button>
+                        </div>
+                        <div id="currentInterval"></div>
+                        <div style="text-align: center"><b>To change the interval between news, enter the number of
+                                minutes and press CHANGE INTERVAL button</b></div>
+                        <div id="third" style="text-align: center">
+                            <form action="settings.php" method="post">
+                                <input type="number" class="form-control" name="time" id="timeControl">
+                                <input type="submit" class="btn btn-primary btn-lg" value="Change Interval"
+                                       id="settingsButton">
+                            </form>
+                        </div>
+                        <div id="sec" style="text-align: center">
+                            <form action="logout.php">
+                                <input type="submit" class="btn btn-primary btn-lg" value="Logout" id="logoutButton">
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-
         </div>
-
-
+        <div class="main">
+            <div class="panel panel-primary">
+                <div class="panel-heading">BIM-Labs NEWS</div>
+                <div class="panel-body table-responsive">
+                    <table class="table table-striped table-hover" id="getId">
+                        <thead>
+                        <tr>
+                            <th>Headline</th>
+                            <th>Funktion</th>
+                        </tr>
+                        </thead>
+                        <tbody id="info">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
 
 <div class="modal fade bs-example-modal-lg" id="newsModal" tabindex="-1" role="dialog"
      aria-labelledby="myLargeModalLabel">
@@ -220,10 +201,10 @@ if (!isset($_SESSION['id'])) {
             url: "getInterval.php",
             dataType: "json",
 
-            success: function(data){
-                data.forEach(function(get){
+            success: function (data) {
+                data.forEach(function (get) {
                     var getInterval = '<div>' +
-                        '<div style="text-align: center">' + get.setting + '<b> minutes.</b></div>'
+                        '<div style="text-align: center"><b>Current Interval </b>' + get.setting + '<b> minutes.</b></div>'
                     '</div>';
                     currentDiv.append(getInterval);
                 });

@@ -6,7 +6,6 @@ body {
 }
 
 .main {
-
     text-align: center;
     position: absolute;
     margin: auto;
@@ -55,7 +54,6 @@ h1 {
 #container{
     display: inline-block;
     width: 100%;
-
 }
 
 #pic{
@@ -84,10 +82,6 @@ h1 {
     margin-left: 4%;
 }
 
-#log{
-    color: #0000cc;
-}
-
 ul{
     margin-bottom: 1%;
 }
@@ -99,7 +93,6 @@ ul{
     padding:2px 2px 2px 2px;
     margin: 2px 2px 2px 2px;
     margin-bottom: 20px;
-
 }
 
 

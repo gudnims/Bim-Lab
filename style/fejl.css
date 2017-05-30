@@ -5,14 +5,6 @@ body {
     padding: 0;
 }
 
-.main {
-    display: inline-block;
-    float: right;
-    width: 70%;
-    margin: 2% 2% 2% 2%;
-
-}
-
 h1 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -49,42 +41,37 @@ h1 {
 
 #container{
     display: inline-block;
-    
-}
-
-h4{
-    text-align: center;
+    width: 100%;
 }
 
 .mainFirst{
-    position: absolute;
-    text-align: center;
+    display: block;
     float: left;
-    margin: 2% 2% 2% 2%;
-    width: 20%;
+    width: 30%;
+    margin: 1% 1% 1% 1%;
 }
 
-#fir{
-    text-align: center;
-    margin: 0% 1% 1% 1%;
+.main{
+    display: block;
+    float: right;
+    width: 65%;
+    margin: 1% 1% 1% 1%;
 }
 
-#third{
+#createNewsButton{
+    display: inline-block;
     text-align: center;
     margin: 1% 1% 1% 1%;
 }
 
-#timeControl{
-    text-align: center;
-    margin: 1% 1% 0% 1%;
-}
-
 #settingsButton{
+    display: inline-block;
     text-align: center;
-    margin: 1% 1% 0% 1%;
+    margin: 1% 1% 1% 1%;
 }
 
-#sec{
+#logoutButton{
+    display: inline-block;
     text-align: center;
-    margin: 1% 1% 0% 1%;
+    margin: 1% 1% 1% 1%;
 }
