@@ -60,7 +60,11 @@ session_start();
     </div>
 </div>
 
+<p id="delay"></p>
+<p id="fullTime"></p>
 
+<script src="getNews.js"></script>
+<script src="getInterval.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
@@ -70,73 +74,10 @@ session_start();
 <script>
 
     $(document).ready(function () {
+        getInterval();
         getNews();
-        setInterval(function(){
-           getNews()
-        }, 12050);
-
     });
 
-    function getTime() {
-        var d = new Date();
-        console.log(d);
-    }
-
-    function getNews() {
-
-
-        $.ajax({
-            method: "GET",
-            url: "data.php",
-            dataType: "json",
-            success: function (data) {
-                getData(data);
-            }
-        })
-    }
-
-    function getData(data) {
-        var num = data.length;
-        var div = $(".firstnews");
-        var main = $("#main");
-        if (num == 0) {
-            $(".firstnews").html("");
-            var nonews = '<div>' +
-                '<h3 style="text-align: center"> No news today this webpage is here to stay.... </h3>'
-            '</div>';
-            div.append(nonews);
-        } else {
-            var counter = 0;
-            var delay = 6000;
-
-            for (var i = 0; i < num; i++) {
-                (function (i) {
-                    setTimeout(function () {
-                        var pickNews = data[counter];
-                        div.html("");
-                        var yesNews = '<div>' +
-                            '<div style="text-align: center"><img src="' + pickNews.pic + '"></div>' +
-                            '<h3 style="text-align: center">' + pickNews.headline + '</h3>' +
-                            '<div style="text-align: center">' + pickNews.content + '</div>'
-                        '</div>';
-                        counter++;
-                        div.append(yesNews).slideDown(1500).delay(3000).slideUp(1500);
-                    }, delay * i);
-                }(i));
-            }
-            getData();
-
-
-            // var randomNumber = Math.floor((Math.random() * num));
-            //var newsData = data[randomNumber];
-            //var newsDiv = '<div>' +
-            //  '<div style="text-align: center"><img src="' + newsData.pic + '"></div>' +
-            //   '<h3 style="text-align: center">' + newsData.headline + '</h3>' +
-            //   '<div style="text-align: center">' + newsData.content + '</div>'
-            //'</div>';
-            //div.append(newsDiv);
-        }
-    }
 </script>
 
 </body>

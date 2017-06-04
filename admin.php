@@ -21,7 +21,7 @@ if (!isset($_SESSION['id'])) {
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 
-    <link rel="stylesheet" type="text/css" href="style/fejl.css">
+    <link rel="stylesheet" type="text/css" href="style/admin.css">
 
     <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 </head>
