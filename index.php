@@ -73,9 +73,16 @@ session_start();
 
 <script>
 
+
     $(document).ready(function () {
         getInterval();
         getNews();
+
+        setInterval(function(){
+            getNews();
+            var rumo = document.getElementById('fullTime').textContent;
+            console.log(rumo);
+        }, 90000)
     });
 
 </script>

@@ -1,7 +1,10 @@
+
 function getData(data) {
     var num = data.length;
     var p = $("#fullTime");
     p.append(num);
+    var q = document.getElementById('fullTime').innerText;
+    console.log(q);
     var div = $(".firstnews");
     var main = $("#main");
     if (num == 0) {
