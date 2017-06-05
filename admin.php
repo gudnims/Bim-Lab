@@ -87,7 +87,7 @@ if (!isset($_SESSION['id'])) {
                         aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Create news</h4>
             </div>
-            <form id="form" action="ajaxupload.php" method="post" enctype="multipart/form-data"
+            <form id="form" action="php/ajaxupload.php" method="post" enctype="multipart/form-data"
                   style="text-align: center">
                 <label class="btn btn-default btn-file">
                     Browse <input type="file" id="uploadImage" accept="image/*" name="image" / style="display:

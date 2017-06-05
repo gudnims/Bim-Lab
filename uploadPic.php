@@ -3,8 +3,7 @@
 $valid_extensions = array('jpeg', 'jpg', 'png'); // valid extensions
 $path = 'uploads/'; // upload directory
 
-if(isset($_FILES['image']))
-{
+if(isset($_FILES['image'])) {
     $img = $_FILES['image']['name'];
     $tmp = $_FILES['image']['tmp_name'];
 
@@ -15,17 +14,14 @@ if(isset($_FILES['image']))
     $final_image = rand(1000,1000000).$img;
 
     // check's valid format
-    if(in_array($ext, $valid_extensions))
-    {
+    if(in_array($ext, $valid_extensions)) {
         $path = $path.strtolower($final_image);
 
-        if(move_uploaded_file($tmp,$path))
-        {
+        if(move_uploaded_file($tmp,$path)) {
             echo "<img src='$path' />";
         }
     }
-    else
-    {
+    else {
         echo 'invalid file';
     }
 }
