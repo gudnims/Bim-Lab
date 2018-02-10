@@ -60,8 +60,8 @@ session_start();
     </div>
 </div>
 
-<p id="delay"></p>
-<p id="fullTime"></p>
+</body>
+</html>
 
 <script src="js/getNews.js"></script>
 <script src="js/getInterval.js"></script>
@@ -73,15 +73,10 @@ session_start();
 
 <script>
 
-    $(document).ready(function () {
-        getInterval();
-        getNews();
-        setInterval(function(){
-            getNews();
-        }, 90000)
+    $( document ).ready(function() {
+        getNews()
     });
 
 </script>
 
-</body>
-</html>
+
