@@ -1,4 +1,11 @@
 var data = [];
+var time = 60000;
+
+function getTheShit(){
+    callBack(data);
+    emptyArray(data);
+    getNews();
+}
 
 function getNews(){
 
@@ -8,23 +15,26 @@ function getNews(){
         dataType: "json",
         success: function (response) {
             data.push(response);
-            var number = data.length;
-            console.log(number, data);
             listData(response);
         }
     });
 }
 
+function emptyArray(data){
+    if(data.length >= 0){
+        data.splice(0, data.length);
+    }
+    return data;
+}
+
 function callBack(data){
-    var num = data.length;
-    console.log(num);
-    return num;
+    var num = data.length + 1;
+    var callAgain = num * time;
+    return callAgain;
 }
 
 function listData(data){
             var num = data.length;
-            //console.log(num);
-            var milliSeconds = 10000;
             var div = $(".firstnews");
             if (num == 0) {
                 $(".firstnews").html("");
@@ -34,9 +44,8 @@ function listData(data){
                 div.append(nonews);
             } else {
                 var counter = 0;
-                var delayed = milliSeconds;
-                var slide = 1500;
-                var pause = milliSeconds - slide - slide;
+                var slide = 5000;
+                var pause = time - slide - slide;
                 for (var i = 0; i < num; i++) {
                     (function (i) {
                         setTimeout(function () {
@@ -49,10 +58,9 @@ function listData(data){
                             '</div>';
                             counter++;
                             div.append(yesNews).slideDown(slide).delay(pause).slideUp(slide);
-                        }, delayed * i);
+                        }, time * i);
                     }(i));
                 }
             }
-
 }
 

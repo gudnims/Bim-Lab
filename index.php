@@ -74,7 +74,8 @@ session_start();
 <script>
 
     $( document ).ready(function() {
-        getNews()
+        getNews();
+        setInterval(getTheShit, callBack(data));
     });
 
 </script>
