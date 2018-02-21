@@ -1,9 +1,9 @@
 var data = [];
-var time = 60000;
+var time = 30000;
 
 function getTheShit(){
-    callBack(data);
     emptyArray(data);
+    callBack(data);
     getNews();
 }
 
@@ -21,7 +21,7 @@ function getNews(){
 }
 
 function emptyArray(data){
-    if(data.length >= 0){
+    if(data.length > 0){
         data.splice(0, data.length);
     }
     return data;
@@ -34,6 +34,7 @@ function callBack(data){
 }
 
 function listData(data){
+    var pickNews = [];
             var num = data.length;
             var div = $(".firstnews");
             if (num == 0) {
@@ -49,7 +50,7 @@ function listData(data){
                 for (var i = 0; i < num; i++) {
                     (function (i) {
                         setTimeout(function () {
-                            var pickNews = data[counter];
+                            pickNews = data[counter];
                             div.html("");
                             var yesNews = '<div>' +
                                 '<div style="text-align: center"><img src="' + pickNews.pic + '"></div>' +

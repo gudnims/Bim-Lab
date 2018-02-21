@@ -28,7 +28,7 @@
       <file leaf-file-name="getInterval.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/getInterval.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
+            <state relative-caret-position="30">
               <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="26" />
               <folding>
                 <marker date="1496679491218" expanded="true" signature="66:87" ph="SELECT * FRO... setting" />
@@ -72,13 +72,13 @@
       <file leaf-file-name="getNews.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/getNews.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+            <state relative-caret-position="289">
+              <caret line="62" column="49" selection-start-line="62" selection-start-column="49" selection-end-line="62" selection-end-column="49" />
               <folding>
-                <marker date="1518387310635" expanded="true" signature="819:837" ph="..." />
-                <marker date="1518387310635" expanded="true" signature="1430:1448" ph="..." />
-                <marker date="1518387310635" expanded="true" signature="1536:1554" ph="..." />
-                <marker date="1518387310635" expanded="true" signature="1635:1653" ph="..." />
+                <marker date="1519249444809" expanded="true" signature="841:859" ph="..." />
+                <marker date="1519249444809" expanded="true" signature="1502:1520" ph="..." />
+                <marker date="1519249444809" expanded="true" signature="1608:1626" ph="..." />
+                <marker date="1519249444809" expanded="true" signature="1707:1725" ph="..." />
               </folding>
             </state>
           </provider>
@@ -87,8 +87,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="77" column="45" selection-start-line="77" selection-start-column="41" selection-end-line="77" selection-end-column="45" />
+            <state relative-caret-position="132">
+              <caret line="75" column="36" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -198,7 +198,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -247,6 +246,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -384,12 +384,13 @@
       <workItem from="1496848071561" duration="17000" />
       <workItem from="1518259218196" duration="6531000" />
       <workItem from="1518295425812" duration="10979000" />
-      <workItem from="1518378358277" duration="8234000" />
+      <workItem from="1518378358277" duration="9128000" />
+      <workItem from="1519245569658" duration="3369000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="231086000" />
+    <option name="totallyTimeSpent" value="235349000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -673,22 +674,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getInterval.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="26" />
-          <folding>
-            <marker date="1496679491218" expanded="true" signature="66:87" ph="SELECT * FRO... setting" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
           <folding>
             <marker date="1496679498479" expanded="true" signature="66:84" ph="SELECT * FRO... news" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getInterval.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="26" />
+          <folding>
+            <marker date="1496679491218" expanded="true" signature="66:87" ph="SELECT * FRO... setting" />
           </folding>
         </state>
       </provider>
@@ -703,21 +704,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="77" column="45" selection-start-line="77" selection-start-column="41" selection-end-line="77" selection-end-column="45" />
+        <state relative-caret-position="132">
+          <caret line="75" column="36" selection-start-line="75" selection-start-column="36" selection-end-line="75" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/getNews.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+        <state relative-caret-position="289">
+          <caret line="62" column="49" selection-start-line="62" selection-start-column="49" selection-end-line="62" selection-end-column="49" />
           <folding>
-            <marker date="1518387310635" expanded="true" signature="819:837" ph="..." />
-            <marker date="1518387310635" expanded="true" signature="1430:1448" ph="..." />
-            <marker date="1518387310635" expanded="true" signature="1536:1554" ph="..." />
-            <marker date="1518387310635" expanded="true" signature="1635:1653" ph="..." />
+            <marker date="1519249444809" expanded="true" signature="841:859" ph="..." />
+            <marker date="1519249444809" expanded="true" signature="1502:1520" ph="..." />
+            <marker date="1519249444809" expanded="true" signature="1608:1626" ph="..." />
+            <marker date="1519249444809" expanded="true" signature="1707:1725" ph="..." />
           </folding>
         </state>
       </provider>

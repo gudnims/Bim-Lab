@@ -75,6 +75,7 @@ session_start();
 
     $( document ).ready(function() {
         getNews();
+        emptyArray(data);
         setInterval(getTheShit, callBack(data));
     });
 
