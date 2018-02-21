@@ -53,7 +53,7 @@ function listData(data){
                             pickNews = data[counter];
                             div.html("");
                             var yesNews = '<div>' +
-                                '<div style="text-align: center"><img src="' + pickNews.pic + '"></div>' +
+                                '<div style="text-align: center"><img src="' + pickNews.pic + '" height="350" width="350"></div>' +
                                 '<h3 style="text-align: center">' + pickNews.headline + '</h3>' +
                                 '<div style="text-align: center">' + pickNews.content + '</div>'
                             '</div>';
