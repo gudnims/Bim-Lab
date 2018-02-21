@@ -1,5 +1,5 @@
 var data = [];
-var time = 30000;
+var time = 60000;
 
 function getTheShit(){
     emptyArray(data);
